@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from .routes import items
-from .database import engine
+from src.data.database import engine
 
 app = FastAPI()
 
 # Crear las tablas en la base de datos
 def create_tables():
-    from .models import Base
+    from src.data.models import Base
     Base.metadata.create_all(bind=engine)
 
 @app.on_event("startup")
